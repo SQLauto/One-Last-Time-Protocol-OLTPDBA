@@ -13,7 +13,7 @@ Note: Update variable $wdir to the location where output to be saved.
 Access help through "help .\Find-SQLServices_File_Input.ps1"
 
 .EXAMPLE
-PS S:\> S:\Find-SQLServices_IV.ps1
+PS S:\> .\Find-SQLServices_IV.ps1
 cmdlet Find-SQLServices_IV.ps1 at command pipeline position 1
 Supply values for the following parameters:
 server[0]: SERVER1
