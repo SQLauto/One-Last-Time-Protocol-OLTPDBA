@@ -27,7 +27,8 @@ $Printdate = date -Format("ddMMMyyyy")
 
 Foreach ($PCname in $server)
     {
-Get-service  -ComputerName $PCname -displayname "*SQL*" | where{$_.StartType -ne "disabled"  } | select MachineName,displayname,status,StartType | Format-Color @{'stopped' = 'red'} | ft -AutoSize
-Get-service  -ComputerName $PCname -displayname "*SQL*" | where{$_.StartType -ne "disabled"  } | select MachineName,displayname,status,StartType |Export-Csv "$wdir\SQLState_$printdate.csv"  -NoTypeInformation -force -append
+$output = Get-service  -ComputerName $PCname -displayname "*SQL*" | where{$_.StartType -ne "disabled"  } | select MachineName,displayname,status,StartType 
+$output | Format-Color @{'stopped' = 'red'} | ft -AutoSize
+$output |Export-Csv "$wdir\SQLState_$printdate.csv"  -NoTypeInformation -force -append
 
 }
