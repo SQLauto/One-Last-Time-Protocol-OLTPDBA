@@ -1,6 +1,6 @@
 ﻿
 
-#Function from link: http://www.bgreco.net/powershell/format-color/
+#Function courtesy Brad Greco: http://www.bgreco.net/powershell/format-color/
 function Format-Color([hashtable] $Colors = @{}, [switch] $SimpleMatch) {
 	$lines = ($input | Out-String) -replace "`r", "" -split "`n"
 	foreach($line in $lines) {
