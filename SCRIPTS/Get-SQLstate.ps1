@@ -25,7 +25,7 @@ param
 [parameter(mandatory=$true)]
 [string[]]$server
 )
-$wdir = pwd | select -ExpandProperty path #By default saves to current diretly, change if required.
+$wdir = pwd | select -ExpandProperty path #By default saves to current diretly, change if 
 $Printdate = date -Format("ddMMMyy_Hmm")
 clc "$wdir\noaccess.txt" -ErrorAction SilentlyContinue
 Foreach ($PCname in $server)
@@ -34,7 +34,7 @@ Foreach ($PCname in $server)
     try
     {
 #$output = Get-service  -ComputerName $PCname -displayname "*SQL*" | where{$_.StartType -ne "disabled"  } | select MachineName,displayname,status,StartType
-$output = Get-service  -ComputerName $PCname  -displayname "*SQL*" -ErrorVariable e1 | where{$_.StartType -ne "disabled" -and $_.Name -notin('SQLWriter','SQL Server Distributed Replay Client','SQL Server Distributed Replay Controller') -and $_.Name -notlike 'MSSQLFDLauncher*' } | select MachineName,displayname,status,StartType  
+$output = Get-service  -ComputerName $PCname  -displayname "*SQL*" -ErrorVariable e1 | where{$_.StartType -ne "disabled" -and $_.Name -notin('SQLWriter','SQL Server Distributed Replay Client','SQL Server Distributed Replay Controller') -and $_.Name -notlike 'MSSQLFDLauncher*' } | select MachineName,displayname,status,StartType  | sort status
 $output | Format-Color @{'stopped' = 'red'} | ft -AutoSize
 $output |Export-Csv "$wdir\SQLState_$printdate.csv"  -NoTypeInformation -force -append
 }
