@@ -1,0 +1,1 @@
+﻿gwmi -Query "select * from win32_service where displayname like 'SQL%' and startmode <>'disabled' and  not name like 'MSSQLFDLauncher%' and not name like 'SQLWriter%'"
