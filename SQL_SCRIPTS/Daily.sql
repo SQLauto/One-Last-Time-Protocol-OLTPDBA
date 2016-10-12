@@ -22,3 +22,8 @@ FROM sys.dm_os_buffer_descriptors
    ORDER BY PageCount desc
 GO
 
+--Error log path
+xp_readerrorlog 0, 1, N'Logging SQL Server messages in file'
+
+--SQL Port in use
+select  distinct(local_tcp_port) from sys.dm_exec_connections
