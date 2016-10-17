@@ -86,7 +86,7 @@ foreach($vser in $ComputerName)
    "Error checking SQL services state in host $vser,reason below" | Out-File "$wdir\Errors_GetSQLService_$printdate.txt" -Append
    $errout = Test-Connection -ComputerName $vser -Count 1 -EA SilentlyContinue 
    if(!$errout)
-    {"**Server $vser doesnt exist" | Out-File "$wdir\Errors_GetSQLService_$printdate.txt" -Append}
+    {"**Unable to ping the Server:  $vser" | Out-File "$wdir\Errors_GetSQLService_$printdate.txt" -Append}
    else
     {"**$env:USERNAME does not have access to $vser" | Out-File "$wdir\Errors_GetSQLService_$printdate.txt" -Append}
 
