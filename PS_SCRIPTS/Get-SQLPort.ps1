@@ -6,7 +6,7 @@
 
 foreach($cname in $computername)
 {
-$namespace = gwmi -Namespace "root\microsoft\sqlserver" -Class "__Namespace" -Filter "name like 'ComputerManagement%'" -ComputerName $cname | sort desc | select -ExpandProperty name
+$namespace = gwmi -Namespace "root\microsoft\sqlserver" -Class "__Namespace" -Filter "name like 'ComputerManagement%'" -ComputerName $cname | sort desc | select -ExpandProperty name -First 1
 
  $ins= GWMI -computername $cname  -Namespace "root\microsoft\SqlServer\$namespace" -Class ServerNetworkProtocolProperty -Filter "IPAddressName='IPAll' and not propertystrval=''" | select pscomputername,instancename,propertystrval,PropertyName,IPAddressName,ProtocolName
 
