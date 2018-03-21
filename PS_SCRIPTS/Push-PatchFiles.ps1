@@ -17,7 +17,7 @@
 $OutputDir = "$env:USERPROFILE"
 $FolderComment = 'SQLPatch'
 $SP  = 'K:\Test'
-$GDR = ''
+#$GDR = ''
 
 $PushOutcome=@()
 
