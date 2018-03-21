@@ -9,9 +9,12 @@
         [Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
-        [string[]]$Servername
+        [string[]]$Servername,
+        [alias('EO')]
+        [SWITCH] $Exportoutput = $false
     )
 
+$OutputDir = "$env:USERPROFILE"
 $FolderComment = 'SQLPatch'
 $SP  = 'K:\Test'
 $GDR = ''
@@ -38,5 +41,6 @@ cpi $sp  -Destination $DestinationPath -Recurse -Force
 }
 
 $PushOutcome | ft -AutoSize
+if ($Exportoutput) {$PushOutcome | Export-Csv $("$OutputDir\PatchPath_"+(Get-Date -Format "yyyyMMddTHHmmss").tostring()+'.csv')  -NoTypeInformation -force -append}
 
 }#Function Closure
