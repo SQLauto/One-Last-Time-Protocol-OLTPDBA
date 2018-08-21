@@ -1,5 +1,5 @@
 --Author: Kannan G
---Usage: Moving a DB file to another folder? This script helps to generate the TSQL scripts for the same
+--Use case: Moving a DB file to another folder? This script helps to generate the TSQL scripts for the same
 --Example: --EXEC master..USP_DBMoveSGEN @DBname='dbmonitor',@files2move='both',@NewdataPath='E:\data\',@NewlogPath='E:\log\',@Setonline=1,@verbose=1
 
 USE master
